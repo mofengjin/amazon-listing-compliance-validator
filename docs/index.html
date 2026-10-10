@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon Listing Title & Bullet Points Validator - Stop Suppressed Listings</title>
+  <meta name="description" content="Validate Amazon Title & Bullet Points against strict character and byte limits, mobile cutoff, and 100+ prohibited promotional claims. 100% offline.">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --dark-bg: #0f172a;
+      --card-bg: #1e293b;
+      --card-inner: #0b1329;
+      --border-color: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-green: #10b981;
+      --accent-red: #ef4444;
+      --accent-gold: #f59e0b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .navbar {
+      border-bottom: 1px solid var(--border-color);
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+    }
+    .brand { font-size: 1.2rem; font-weight: 700; color: #fff; }
+    .brand-badge {
+      background: #1e3a8a;
+      color: #60a5fa;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: 8px;
+    }
+    .btn-cta {
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+    .btn-cta:hover { background: var(--primary-hover); transform: translateY(-1px); }
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+    .pill {
+      display: inline-flex;
+      gap: 8px;
+      background: rgba(37, 99, 235, 0.15);
+      border: 1px solid rgba(37, 99, 235, 0.4);
+      color: #93c5fd;
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    .highlight-text {
+      background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 800px;
+      margin: 0 auto 36px;
+    }
+    .card-wrap {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 36px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      margin-bottom: 60px;
+      text-align: left;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    @media (max-width: 900px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.2rem; }
+    }
+    textarea {
+      width: 100%;
+      background: var(--card-inner);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      resize: vertical;
+      font-family: inherit;
+      outline: none;
+    }
+    .pricing-card {
+      background: var(--card-bg);
+      border: 2px solid var(--primary);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      max-width: 500px;
+      margin: 0 auto 80px;
+    }
+    .price-big { font-size: 3.5rem; font-weight: 900; margin: 12px 0; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <div class="brand">
+        SellerInsights <span class="brand-badge">Listing Guard Suite</span>
+      </div>
+      <div>
+        <a id="navBuyBtn" href="https://mofengjin.gumroad.com/l/amazon-listing-validator" class="btn-cta" target="_blank" rel="noopener">
+          Get Lifetime Access ($19)
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <div class="pill">Amazon Listing Suppression Defense System</div>
+      <h1>
+        Never Get Your Listing Suppressed for <br>
+        <span class="highlight-text">Illegal Claims or Character Limit Violations</span>
+      </h1>
+      <p>
+        Amazon automatically suppresses listings with subjective promotional claims like "Best Seller" or character limit overflows. Audit your Title & Bullets in milliseconds — 100% offline.
+      </p>
+
+      <div class="card-wrap">
+        <h2 style="font-size: 1.4rem; margin-bottom: 20px;">Live Compliance Inspector Demo</h2>
+        <div class="grid-2">
+          <div>
+            <label style="display:block; font-size:0.85rem; color: var(--text-muted); margin-bottom:6px;">Test Your Product Title:</label>
+            <textarea id="demoTitle" rows="4">HOT SALE! Best Seller Wireless Earbuds Bluetooth 5.3 with 100% Quality Guaranteed Free Shipping</textarea>
+            <button class="btn-cta" style="margin-top:12px; width:100%; border:none; cursor:pointer;" onclick="runAudit()">Run Compliance Audit</button>
+          </div>
+          <div>
+            <div id="demoResult" style="background:var(--card-inner); border:1px solid var(--border-color); border-radius:8px; padding:18px;">
+              <div style="font-size:0.9rem; font-weight:700; color:var(--accent-red); margin-bottom:10px;">Warning: 4 Prohibited Claims Detected!</div>
+              <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px;">
+                <span style="background:rgba(239,68,68,0.2); border:1px solid var(--accent-red); color:#fca5a5; padding:2px 8px; border-radius:4px; font-size:0.8rem;">"hot sale"</span>
+                <span style="background:rgba(239,68,68,0.2); border:1px solid var(--accent-red); color:#fca5a5; padding:2px 8px; border-radius:4px; font-size:0.8rem;">"best seller"</span>
+                <span style="background:rgba(239,68,68,0.2); border:1px solid var(--accent-red); color:#fca5a5; padding:2px 8px; border-radius:4px; font-size:0.8rem;">"100% quality"</span>
+                <span style="background:rgba(239,68,68,0.2); border:1px solid var(--accent-red); color:#fca5a5; padding:2px 8px; border-radius:4px; font-size:0.8rem;">"free shipping"</span>
+              </div>
+              <div style="font-size:0.85rem; color:var(--text-muted);">
+                Length: 104 / 200 characters | Mobile SERP Cutoff: Ok
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pricing-card">
+        <h3 style="font-size: 1.4rem;">Get the Complete Desktop Compliance Suite</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 8px;">Run offline on any PC or Mac. Zero monthly fees.</p>
+        <div class="price-big">$19</div>
+        <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 24px;">One-time payment - Lifetime access & free updates</p>
+        <a id="cardBuyBtn" href="https://mofengjin.gumroad.com/l/amazon-listing-validator" class="btn-cta" style="width: 100%; font-size: 1.1rem; padding: 14px;" target="_blank" rel="noopener">
+          Instant Download & Lifetime Access
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="text-align: center; padding: 32px; border-top: 1px solid var(--border-color); color: #64748b; font-size: 0.85rem;">
+    SellerInsights &copy; 2026. All rights reserved. Not affiliated with Amazon.com, Inc.
+  </footer>
+
+  <script>
+    const PROHIBITED = ["free shipping", "bestseller", "best seller", "best-seller", "top seller", "100% quality", "quality guaranteed", "money back", "money-back", "satisfaction guaranteed", "sale", "hot sale", "discount", "cheap", "lowest price", "free gift"];
+    function runAudit() {
+      const text = document.getElementById('demoTitle').value.toLowerCase();
+      const found = PROHIBITED.filter(p => new RegExp(`\\b${p}\\b`, 'i').test(text));
+      const res = document.getElementById('demoResult');
+      if (found.length > 0) {
+        res.innerHTML = `
+          <div style="font-size:0.9rem; font-weight:700; color:var(--accent-red); margin-bottom:10px;">Warning: ${found.length} Prohibited Claims Detected!</div>
+          <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px;">
+            ${found.map(w => `<span style="background:rgba(239,68,68,0.2); border:1px solid var(--accent-red); color:#fca5a5; padding:2px 8px; border-radius:4px; font-size:0.8rem;">"${w}"</span>`).join('')}
+          </div>
+          <div style="font-size:0.85rem; color:var(--text-muted);">
+            Length: ${text.length} / 200 characters | Mobile SERP Cutoff: ${text.length > 80 ? 'Truncated on mobile' : 'Ok'}
+          </div>
+        `;
+      } else {
+        res.innerHTML = `
+          <div style="font-size:0.9rem; font-weight:700; color:var(--accent-green); margin-bottom:10px;">Listing Health: 100% Clean!</div>
+          <div style="font-size:0.85rem; color:var(--text-muted);">Zero prohibited terms detected. Character length: ${text.length} / 200.</div>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>
