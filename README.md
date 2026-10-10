@@ -3,11 +3,11 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Privacy: 100% Offline](https://img.shields.io/badge/Privacy-100%25%20Offline-success.svg)](README.md)
 [![Amazon Policy: 2026 Ready](https://img.shields.io/badge/Amazon%20Policy-2026%20Compliant-green.svg)](README.md)
-[![Purchase: Gumroad $19](https://img.shields.io/badge/Lifetime%20License-%2419%20USD-blueviolet.svg)](https://mofengjin.gumroad.com/l/amazon-listing-validator)
+[![Purchase: Gumroad $19](https://img.shields.io/badge/Lifetime%20License-%2419%20USD-blueviolet.svg)](https://mofengjin.gumroad.com/l/lennuo)
 
 > **Audit your Amazon Product Title and Bullet Points in real time against strict character/byte limits, mobile search truncations, and 100+ prohibited promotional words.**
 
-[Official Gumroad Checkout ($19 USD Lifetime License)](https://mofengjin.gumroad.com/l/amazon-listing-validator) | [Live Online Demo](https://mofenginto.github.io/amazon-listing-compliance-validator/)
+[Official Gumroad Checkout ($19 USD Lifetime License)](https://mofengjin.gumroad.com/l/lennuo) | [Live Online Demo](https://mofenginto.github.io/amazon-listing-compliance-validator/)
 
 ---
 
@@ -45,6 +45,6 @@ Amazon's automated catalog bots silently penalize listings that violate content 
 ## License & Purchase
 
 - **Lifetime License**: $19 USD (One-time payment)
-- **Instant Download**: [https://mofengjin.gumroad.com/l/amazon-listing-validator](https://mofengjin.gumroad.com/l/amazon-listing-validator)
+- **Instant Download**: [https://mofengjin.gumroad.com/l/lennuo](https://mofengjin.gumroad.com/l/lennuo)
 
 Copyright (c) 2026 SellerInsights. All rights reserved.
