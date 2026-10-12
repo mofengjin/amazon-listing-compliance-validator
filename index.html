@@ -199,7 +199,10 @@
     <div class="card">
       <div class="card-title">
         <span>Listing Content Input</span>
-        <button class="btn btn-secondary" onclick="loadSample()">Load Sample</button>
+        <div style="display: flex; gap: 8px;">
+          <button type="button" class="btn btn-secondary" style="font-size: 0.8rem; padding: 6px 12px;" onclick="loadSample('clean')">Clean Sample</button>
+          <button type="button" class="btn" style="font-size: 0.8rem; padding: 6px 12px; background: #dc2626;" onclick="loadSample('violation')">Test Violations</button>
+        </div>
       </div>
 
       <div class="input-group">
@@ -411,13 +414,22 @@
       }
     }
 
-    function loadSample() {
-      document.getElementById('titleInp').value = "Bluetooth 5.3 Wireless Earbuds with Noise Cancelling, 48H Playtime IPX7 Waterproof Sport Earphones for Running Workout with Built-in Mic";
-      document.getElementById('b1').value = "IMMERSIVE DEEP BASS & CRYSTAL CALLS: Equipped with 13mm dynamic composite drivers for authentic acoustic balance and CVC8.0 dual-mic clarity.";
-      document.getElementById('b2').value = "48 HOURS EXTENDED PLAYTIME: Enjoy 8 hours on a single charge and 40 additional hours with the compact USB-C digital display charging case.";
-      document.getElementById('b3').value = "ERGONOMIC SPORT FIT & IPX7 WATERPROOF: Ultra-lightweight 3.8g buds with silicone ear tips ensure zero pressure during intense cardio and gym sessions.";
-      document.getElementById('b4').value = "ONE-STEP PAIRING & TOUCH CONTROLS: Automatically connects to your phone upon opening lid; tap to adjust volume, skip tracks, and summon voice assistant.";
-      document.getElementById('b5').value = "WHAT YOU GET: 2x Wireless Earbuds, 1x Charging Case, 3x Silicone Eartip Pairs (S/M/L), 1x Type-C Cable, User Manual, and 12-Month Support.";
+    function loadSample(mode = 'clean') {
+      if (mode === 'violation') {
+        document.getElementById('titleInp').value = "Best Seller 2026 Wireless Earbuds with Free Shipping, 100% Quality Guaranteed, Top Seller Headphones with Lowest Price Discount for iPhone & Android";
+        document.getElementById('b1').value = "100% SATISFACTION GUARANTEED: Risk-free purchase with unconditional money back guarantee if not fully satisfied.";
+        document.getElementById('b2').value = "CHEAPEST PRICE & HOT SALE: Special discount bonus included with lowest price on market.";
+        document.getElementById('b3').value = "FDA APPROVED & ANTIBACTERIAL: Hospital grade eco-friendly silicone ear tips prevent ear fatigue and guarantee result.";
+        document.getElementById('b4').value = "WHOLESALE QUALITY: Direct factory supply with permanent durability and free gift.";
+        document.getElementById('b5').value = "BEST SELLER PROMISE: Buy today for extra holiday promotion deal.";
+      } else {
+        document.getElementById('titleInp').value = "Bluetooth 5.3 Wireless Earbuds with Noise Cancelling, 48H Playtime IPX7 Waterproof Sport Earphones for Running Workout with Built-in Mic";
+        document.getElementById('b1').value = "IMMERSIVE DEEP BASS & CRYSTAL CALLS: Equipped with 13mm dynamic composite drivers for authentic acoustic balance and CVC8.0 dual-mic clarity.";
+        document.getElementById('b2').value = "48 HOURS EXTENDED PLAYTIME: Enjoy 8 hours on a single charge and 40 additional hours with the compact USB-C digital display charging case.";
+        document.getElementById('b3').value = "ERGONOMIC SPORT FIT & IPX7 WATERPROOF: Ultra-lightweight 3.8g buds with silicone ear tips ensure zero pressure during intense cardio and gym sessions.";
+        document.getElementById('b4').value = "ONE-STEP PAIRING & TOUCH CONTROLS: Automatically connects to your phone upon opening lid; tap to adjust volume, skip tracks, and summon voice assistant.";
+        document.getElementById('b5').value = "WHAT YOU GET: 2x Wireless Earbuds, 1x Charging Case, 3x Silicone Eartip Pairs (S/M/L), 1x Type-C Cable, User Manual, and 12-Month Support.";
+      }
       validateAll();
     }
 
