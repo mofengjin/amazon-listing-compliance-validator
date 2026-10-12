@@ -4,10 +4,13 @@
 [![Privacy: 100% Offline](https://img.shields.io/badge/Privacy-100%25%20Offline-success.svg)](README.md)
 [![Amazon Policy: 2026 Ready](https://img.shields.io/badge/Amazon%20Policy-2026%20Compliant-green.svg)](README.md)
 [![Purchase: Gumroad $19](https://img.shields.io/badge/Lifetime%20License-%2419%20USD-blueviolet.svg)](https://mofengjin.gumroad.com/l/lennuo)
+[![All-in-One Suite: $59](https://img.shields.io/badge/Complete%20Suite%205--in--1-%2459%20USD%20(Save%2050%25)-success.svg)](https://mofengjin.gumroad.com/l/amazon-seller-suite)
 
 > **Audit your Amazon Product Title and Bullet Points in real time against strict character/byte limits, mobile search truncations, and 100+ prohibited promotional words.**
+>
+> **Bundle & Save 50%:** Get all 5 standalone seller tools in one bundle for just **$59 USD** (Save $60+): [**Amazon SellerInsights Complete Suite (5-in-1 Lifetime Access)**](https://mofengjin.gumroad.com/l/amazon-seller-suite).
 
-[Official Gumroad Checkout ($19 USD Lifetime License)](https://mofengjin.gumroad.com/l/lennuo) | [Live Online Demo](https://mofenginto.github.io/amazon-listing-compliance-validator/)
+[Official Gumroad Checkout ($19 USD Lifetime License)](https://mofengjin.gumroad.com/l/lennuo) | [5-in-1 Complete Suite ($59 USD)](https://mofengjin.gumroad.com/l/amazon-seller-suite) | [Live Online Demo](https://mofenginto.github.io/amazon-listing-compliance-validator/)
 
 ---
 
