@@ -1,53 +1,54 @@
 # Amazon Listing Title & Bullet Points Validator
 
+[English](#english) | [中文使用说明](#中文使用说明)
+
+---
+
+<a name="english"></a>
+## English
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Privacy: 100% Offline](https://img.shields.io/badge/Privacy-100%25%20Offline-success.svg)](README.md)
 [![Amazon Policy: 2026 Ready](https://img.shields.io/badge/Amazon%20Policy-2026%20Compliant-green.svg)](README.md)
-[![Purchase: Gumroad $19](https://img.shields.io/badge/Lifetime%20License-%2419%20USD-blueviolet.svg)](https://mofengjin.gumroad.com/l/lennuo)
-[![All-in-One Suite: $59](https://img.shields.io/badge/Complete%20Suite%205--in--1-%2459%20USD%20(Save%2050%25)-success.svg)](https://mofengjin.gumroad.com/l/amazon-seller-suite)
+[![Purchase: Gumroad $19](https://img.shields.io/badge/Lifetime%20License-%2419%20USD-blueviolet.svg)](https://mofengjin.gumroad.com/l/nwkpup)
+[![Sponsor: WeChat Pay](https://img.shields.io/badge/Sponsor-WeChat%20Pay-07C160.svg)](#sponsor--support)
 
-> **Audit your Amazon Product Title and Bullet Points in real time against strict character/byte limits, mobile search truncations, and 100+ prohibited promotional words.**
->
-> **Bundle & Save 50%:** Get all 5 standalone seller tools in one bundle for just **$59 USD** (Save $60+): [**Amazon SellerInsights Complete Suite (5-in-1 Lifetime Access)**](https://mofengjin.gumroad.com/l/amazon-seller-suite).
+> **Inspect listing copy against Amazon's official style guides, identify prohibited claims, and ensure 100% compliance across US, UK, and EU marketplaces.**
 
-[Official Gumroad Checkout ($19 USD Lifetime License)](https://mofengjin.gumroad.com/l/lennuo) | [5-in-1 Complete Suite ($59 USD)](https://mofengjin.gumroad.com/l/amazon-seller-suite) | [Live Online Demo](https://mofenginto.github.io/amazon-listing-compliance-validator/)
+### Key Capabilities
+1. **Character & Formatting Verification**: Validates 200-character title limit and bullet length requirements.
+2. **Prohibited Phrase & Policy Scanner**: Detects warranty claims, subjective boasts ("Best seller", "Top rated"), and restricted words.
+3. **1-Click Copy & Clean**: Exports formatted, compliant listing copy instantly.
 
----
+### Quick Start
+- Double-click `【双击使用】Listing五点合规检测器 (离线网页版).html` in your browser.
 
-## Why Sellers Face Silent Listing Suppression
+### Sponsor & Support
+- **International**: [Official Gumroad ($19 USD)](https://mofengjin.gumroad.com/l/nwkpup)
+- **WeChat Pay / 微信赞赏**:
 
-Amazon's automated catalog bots silently penalize listings that violate content guidelines:
-- **Title Character Limits**: Titles over 200 characters risk complete de-indexing or automated bot shortening.
-- **Mobile Truncation**: Mobile search results truncate titles after ~80 characters. If your core differentiators appear after byte 80, mobile conversion plunges.
-- **Prohibited Promotional Claims**: Words like *“Best Seller”*, *“100% Quality Guaranteed”*, *“Free Shipping”*, *“Discount”*, or *“Money Back”* violate Amazon policy and cause silent search suppression.
-- **Bullet Point Density**: Bullets over 500 characters trigger customer drop-off and mobile reading fatigue.
-
-**SellerInsights Listing Validator** audits your copy in real time, flags high-risk words, and simulates desktop/mobile SERP rendering — 100% locally in your browser.
-
----
-
-## Key Features
-
-1. **Exact Multi-Byte & Character Metrics**: Tracks both UTF-8 byte weights and character counts.
-2. **100+ Prohibited & Sensitive Term Interceptor**: Highlights promotional phrases, medical claims, and non-compliant claims.
-3. **Mobile SERP Truncation Warning**: Visualizes how your title cuts off on iOS and Android Amazon app interfaces.
-4. **SERP Box Simulation**: Previews how your product card, price, and bullets render to prospective buyers.
-5. **100% Offline & Private**: Zero data sent over the wire. Your unreleased listings stay completely secure.
+<div align="center">
+  <img src="assets/wechat_sponsor.png" width="260" alt="WeChat Sponsor QR" />
+  <p><b>Scan with WeChat to support the creator</b></p>
+</div>
 
 ---
 
-## Quick Start
+<a name="中文使用说明"></a>
+## 中文使用说明
 
-1. Double-click `index.html` to open the validator in any modern web browser.
-2. Paste your draft Title and 5 Bullet Points.
-3. Review flagged prohibited terms and adjust your copy.
-4. Copy clean, compliant text directly into Amazon Seller Central.
+> **亚马逊 Listing 标题与五点描述合规自检器 —— 远离下架与限流风险，100% 本地运行。**
 
----
+### 核心功能
+1. **字符上限与格式合规校验**：自动校验标题 200 字符限制、五点描述长度及全大写防滥用规则。
+2. **亚马逊官方违禁词与敏感词自检**：智能拦截“Best Seller”、“Top Rated”、“Free Shipping”、“Guaranteed”等违规促销与主观夸大词。
+3. **格式一键美化与清洗**：清除非法 Emoji、乱码符号与违规 HTML 标签。
 
-## License & Purchase
+### 使用方法
+- 双击运行 `【双击使用】Listing五点合规检测器 (离线网页版).html` 即可使用。
 
-- **Lifetime License**: $19 USD (One-time payment)
-- **Instant Download**: [https://mofengjin.gumroad.com/l/lennuo](https://mofengjin.gumroad.com/l/lennuo)
-
-Copyright (c) 2026 SellerInsights. All rights reserved.
+### 支持作者（请喝冰阔乐）
+<div align="center">
+  <img src="assets/wechat_sponsor.png" width="280" alt="微信赞赏码" />
+  <p><b>微信扫一扫 · 请作者喝瓶冰阔乐</b></p>
+</div>

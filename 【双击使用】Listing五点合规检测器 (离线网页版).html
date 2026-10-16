@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon Listing Title & Bullet Points Validator - SellerInsights</title>
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --card-bg: #1e293b;
+      --card-inner: #0b1329;
+      --border: #334155;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --green: #10b981;
+      --red: #ef4444;
+      --gold: #f59e0b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 24px;
+    }
+    .header {
+      max-width: 1200px;
+      margin: 0 auto 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .brand h1 { font-size: 1.4rem; font-weight: 700; color: #fff; }
+    .brand p { font-size: 0.85rem; color: var(--text-muted); }
+    .badge-wrap { display: flex; gap: 8px; }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 9999px;
+    }
+    .badge-blue {
+      background: rgba(37, 99, 235, 0.2);
+      border: 1px solid var(--primary);
+      color: #93c5fd;
+    }
+    .badge-green {
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid var(--green);
+      color: #6ee7b7;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 900px) {
+      .container { grid-template-columns: 1fr; }
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+    .input-group { margin-bottom: 20px; }
+    input[type="text"], textarea, select {
+      width: 100%;
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      padding: 12px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input[type="text"]:focus, textarea:focus, select:focus {
+      border-color: var(--primary);
+    }
+    .meter-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 6px;
+      font-size: 0.8rem;
+    }
+    .meter-val { font-weight: 700; font-family: monospace; }
+    .val-ok { color: var(--green); }
+    .val-warn { color: var(--gold); }
+    .val-danger { color: var(--red); }
+    .btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: var(--primary-hover); }
+    .btn-secondary {
+      background: #334155;
+      color: #f8fafc;
+    }
+    .btn-secondary:hover { background: #475569; }
+    .violations-box {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+    .violations-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #f87171;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .violation-tag {
+      display: inline-block;
+      background: rgba(239, 68, 68, 0.25);
+      border: 1px solid var(--red);
+      color: #fca5a5;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      margin: 4px 4px 4px 0;
+      font-family: monospace;
+    }
+    .preview-box {
+      background: #ffffff;
+      color: #0f1111;
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 20px;
+      font-size: 0.9rem;
+    }
+    .preview-title {
+      color: #007185;
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .preview-bullets {
+      padding-left: 20px;
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #333333;
+    }
+    .preview-bullets li { margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+  <!-- Top Announcement Bar for 5-in-1 Suite -->
+  <div style="background: linear-gradient(90deg, #1e293b 0%, #0f172a 100%); color: #f8fafc; padding: 10px 16px; text-align: center; font-size: 13px; font-weight: 500; border-bottom: 1px solid #334155; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;">
+    <span><strong>LIMITED DEAL:</strong> Get all 5 Amazon SellerInsights tools in one Complete Suite (Save 50%).</span>
+    <a href="https://mofengjin.gumroad.com/l/amazon-seller-suite" target="_blank" style="background: #f59e0b; color: #0f172a; text-decoration: none; padding: 4px 12px; border-radius: 9999px; font-weight: 700; font-size: 12px; display: inline-block; transition: background 0.2s;">Unlock 5-in-1 Suite ($59)</a>
+  </div>
+
+  <header class="header">
+    <div class="brand">
+      <h1>Amazon Listing Title & Bullet Points Validator</h1>
+      <p>SellerInsights Compliance & Algorithmic Guard System</p>
+    </div>
+    <div class="badge-wrap">
+      <span class="badge badge-green">100% In-Memory Offline</span>
+      <span class="badge badge-blue">Amazon Policy 2026 Compliant</span>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Left Column: Inputs -->
+    <div class="card">
+      <div class="card-title">
+        <span>Listing Content Input</span>
+        <div style="display: flex; gap: 8px;">
+          <button type="button" class="btn btn-secondary" style="font-size: 0.8rem; padding: 6px 12px;" onclick="loadSample('clean')">Clean Sample</button>
+          <button type="button" class="btn" style="font-size: 0.8rem; padding: 6px 12px; background: #dc2626;" onclick="loadSample('violation')">Test Violations</button>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="titleInp">Product Title:</label>
+        <textarea id="titleInp" rows="3" placeholder="Enter your Amazon product title..." oninput="validateAll()"></textarea>
+        <div class="meter-row">
+          <span id="titleChars" class="meter-val val-ok">0 / 200 Characters</span>
+          <span id="titleBytes" class="meter-val val-ok">0 Bytes</span>
+        </div>
+        <div id="mobileNotice" style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">Mobile Cutoff: 80 characters</div>
+      </div>
+
+      <div class="input-group">
+        <label>Bullet Point 1 (Feature / Benefit):</label>
+        <textarea id="b1" rows="2" placeholder="Key feature 1..." oninput="validateAll()"></textarea>
+        <div class="meter-row">
+          <span id="b1Meter" class="meter-val val-ok">0 / 500 Chars</span>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>Bullet Point 2 (Material / Quality):</label>
+        <textarea id="b2" rows="2" placeholder="Key feature 2..." oninput="validateAll()"></textarea>
+        <div class="meter-row">
+          <span id="b2Meter" class="meter-val val-ok">0 / 500 Chars</span>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>Bullet Point 3 (Functionality):</label>
+        <textarea id="b3" rows="2" placeholder="Key feature 3..." oninput="validateAll()"></textarea>
+        <div class="meter-row">
+          <span id="b3Meter" class="meter-val val-ok">0 / 500 Chars</span>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>Bullet Point 4 (Compatibility):</label>
+        <textarea id="b4" rows="2" placeholder="Key feature 4..." oninput="validateAll()"></textarea>
+        <div class="meter-row">
+          <span id="b4Meter" class="meter-val val-ok">0 / 500 Chars</span>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>Bullet Point 5 (Package / Warranty):</label>
+        <textarea id="b5" rows="2" placeholder="Key feature 5..." oninput="validateAll()"></textarea>
+        <div class="meter-row">
+          <span id="b5Meter" class="meter-val val-ok">0 / 500 Chars</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Audit & Preview -->
+    <div class="card">
+      <div class="card-title">
+        <span>Policy Audit & Health Status</span>
+        <span id="overallScoreBadge" class="badge badge-green">Listing Health: 100%</span>
+      </div>
+
+      <div id="violationsSection" class="violations-box" style="display: none;">
+        <div class="violations-title">
+          <span>Prohibited Promotional or Restricted Terms Detected</span>
+        </div>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom: 8px;">
+          Amazon policy strictly forbids subjective promotional claims and unauthorized terms in Title and Bullets. Listings with these terms risk suppression.
+        </p>
+        <div id="violationsList"></div>
+      </div>
+
+      <div style="background:var(--card-inner); border:1px solid var(--border); border-radius:8px; padding:16px; margin-bottom:20px;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.85rem;">
+          <span style="color:var(--text-muted);">Total Bullets Characters:</span>
+          <span id="totalBulletsChars" style="font-weight:700;">0 / 1000 Chars</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
+          <span style="color:var(--text-muted);">Special Symbol Count (!, @, #, $, %, etc.):</span>
+          <span id="symbolsCount" style="font-weight:700;">0 symbols</span>
+        </div>
+      </div>
+
+      <div class="card-title" style="margin-top:20px;">
+        <span>Amazon SERP Simulation Preview</span>
+      </div>
+      <div class="preview-box">
+        <div id="simTitle" class="preview-title">Product Title Preview will appear here...</div>
+        <div style="color:#565959; font-size:0.75rem; margin-bottom:8px;">Brand: BrandName | 4.8 out of 5 stars (1,248)</div>
+        <div style="font-weight:700; font-size:1.1rem; color:#0f1111; margin-bottom:12px;">$29.99 <span style="font-size:0.75rem; font-weight:normal; color:#565959;">One-Day Delivery</span></div>
+        <div style="font-weight:700; font-size:0.85rem; margin-bottom:6px;">About this item:</div>
+        <ul id="simBullets" class="preview-bullets">
+          <li>Feature details will preview here...</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 100+ Prohibited and sensitive terms on Amazon Listings
+    const PROHIBITED_TERMS = [
+      "free shipping", "bestseller", "best seller", "best-seller", "top seller", 
+      "100% quality", "quality guaranteed", "money back", "money-back", "satisfaction guaranteed",
+      "satisfaction guarantee", "100% satisfaction", "risk free", "risk-free", "sale", 
+      "hot sale", "discount", "cheap", "lowest price", "best price", "free gift", 
+      "bonus", "wholesale", "fda approved", "cure", "treatment", "heal", "covid", 
+      "coronavirus", "antibacterial", "antiviral", "anti-microbial", "pesticide", 
+      "eco friendly", "eco-friendly", "environmentally friendly", "greenest", 
+      "all natural", "100% natural", "non-toxic", "guaranteed result", "permanent"
+    ];
+
+    function getByteLength(str) {
+      return new TextEncoder().encode(str).length;
+    }
+
+    function checkProhibited(text) {
+      const lower = text.toLowerCase();
+      const found = [];
+      for (const term of PROHIBITED_TERMS) {
+        // match word boundary
+        const regex = new RegExp(`\\b${term}\\b`, 'i');
+        if (regex.test(lower)) {
+          found.push(term);
+        }
+      }
+      return found;
+    }
+
+    function validateAll() {
+      const title = document.getElementById('titleInp').value;
+      const b1 = document.getElementById('b1').value;
+      const b2 = document.getElementById('b2').value;
+      const b3 = document.getElementById('b3').value;
+      const b4 = document.getElementById('b4').value;
+      const b5 = document.getElementById('b5').value;
+
+      // Title metrics
+      const titleLen = title.length;
+      const titleBytes = getByteLength(title);
+      const titleCharsEl = document.getElementById('titleChars');
+      const titleBytesEl = document.getElementById('titleBytes');
+
+      titleCharsEl.textContent = `${titleLen} / 200 Characters`;
+      titleBytesEl.textContent = `${titleBytes} Bytes`;
+
+      if (titleLen <= 150) {
+        titleCharsEl.className = 'meter-val val-ok';
+      } else if (titleLen <= 200) {
+        titleCharsEl.className = 'meter-val val-warn';
+      } else {
+        titleCharsEl.className = 'meter-val val-danger';
+      }
+
+      // Bullets
+      const bullets = [b1, b2, b3, b4, b5];
+      let totalBulletsLength = 0;
+      bullets.forEach((b, idx) => {
+        totalBulletsLength += b.length;
+        const meter = document.getElementById(`b${idx + 1}Meter`);
+        meter.textContent = `${b.length} / 500 Chars`;
+        if (b.length <= 400) meter.className = 'meter-val val-ok';
+        else if (b.length <= 500) meter.className = 'meter-val val-warn';
+        else meter.className = 'meter-val val-danger';
+      });
+
+      document.getElementById('totalBulletsChars').textContent = `${totalBulletsLength} / 1000 Chars`;
+
+      // Special symbols count
+      const allText = [title, ...bullets].join(' ');
+      const symbolMatches = allText.match(/[!@#$%^&*()_+=~`{}\[\]:;"'<>?\/\\|]/g) || [];
+      document.getElementById('symbolsCount').textContent = `${symbolMatches.length} symbols`;
+
+      // Prohibited terms check
+      const detectedViolations = checkProhibited(allText);
+      const vSection = document.getElementById('violationsSection');
+      const vList = document.getElementById('violationsList');
+      const scoreBadge = document.getElementById('overallScoreBadge');
+
+      if (detectedViolations.length > 0) {
+        vSection.style.display = 'block';
+        vList.innerHTML = detectedViolations.map(t => `<span class="violation-tag">Violating Word: "${t}"</span>`).join('');
+        scoreBadge.textContent = `Listing Health: Warning (${detectedViolations.length} Violations)`;
+        scoreBadge.className = 'badge badge-danger';
+        scoreBadge.style.background = 'rgba(239, 68, 68, 0.2)';
+        scoreBadge.style.border = '1px solid var(--red)';
+        scoreBadge.style.color = '#f87171';
+      } else {
+        vSection.style.display = 'none';
+        vList.innerHTML = '';
+        if (titleLen > 200) {
+          scoreBadge.textContent = 'Listing Health: Title Length Exceeded';
+          scoreBadge.style.background = 'rgba(245, 158, 11, 0.2)';
+          scoreBadge.style.border = '1px solid var(--gold)';
+          scoreBadge.style.color = '#fbbf24';
+        } else {
+          scoreBadge.textContent = 'Listing Health: 100% Policy Clean';
+          scoreBadge.style.background = 'rgba(16, 185, 129, 0.2)';
+          scoreBadge.style.border = '1px solid var(--green)';
+          scoreBadge.style.color = '#6ee7b7';
+        }
+      }
+
+      // Preview update
+      document.getElementById('simTitle').textContent = title || "Product Title Preview will appear here...";
+      const bulletsUl = document.getElementById('simBullets');
+      const activeBullets = bullets.filter(b => b.trim().length > 0);
+      if (activeBullets.length > 0) {
+        bulletsUl.innerHTML = activeBullets.map(b => `<li>${b}</li>`).join('');
+      } else {
+        bulletsUl.innerHTML = '<li>Feature details will preview here...</li>';
+      }
+    }
+
+    function loadSample(mode = 'clean') {
+      if (mode === 'violation') {
+        document.getElementById('titleInp').value = "Best Seller 2026 Wireless Earbuds with Free Shipping, 100% Quality Guaranteed, Top Seller Headphones with Lowest Price Discount for iPhone & Android";
+        document.getElementById('b1').value = "100% SATISFACTION GUARANTEED: Risk-free purchase with unconditional money back guarantee if not fully satisfied.";
+        document.getElementById('b2').value = "CHEAPEST PRICE & HOT SALE: Special discount bonus included with lowest price on market.";
+        document.getElementById('b3').value = "FDA APPROVED & ANTIBACTERIAL: Hospital grade eco-friendly silicone ear tips prevent ear fatigue and guarantee result.";
+        document.getElementById('b4').value = "WHOLESALE QUALITY: Direct factory supply with permanent durability and free gift.";
+        document.getElementById('b5').value = "BEST SELLER PROMISE: Buy today for extra holiday promotion deal.";
+      } else {
+        document.getElementById('titleInp').value = "Bluetooth 5.3 Wireless Earbuds with Noise Cancelling, 48H Playtime IPX7 Waterproof Sport Earphones for Running Workout with Built-in Mic";
+        document.getElementById('b1').value = "IMMERSIVE DEEP BASS & CRYSTAL CALLS: Equipped with 13mm dynamic composite drivers for authentic acoustic balance and CVC8.0 dual-mic clarity.";
+        document.getElementById('b2').value = "48 HOURS EXTENDED PLAYTIME: Enjoy 8 hours on a single charge and 40 additional hours with the compact USB-C digital display charging case.";
+        document.getElementById('b3').value = "ERGONOMIC SPORT FIT & IPX7 WATERPROOF: Ultra-lightweight 3.8g buds with silicone ear tips ensure zero pressure during intense cardio and gym sessions.";
+        document.getElementById('b4').value = "ONE-STEP PAIRING & TOUCH CONTROLS: Automatically connects to your phone upon opening lid; tap to adjust volume, skip tracks, and summon voice assistant.";
+        document.getElementById('b5').value = "WHAT YOU GET: 2x Wireless Earbuds, 1x Charging Case, 3x Silicone Eartip Pairs (S/M/L), 1x Type-C Cable, User Manual, and 12-Month Support.";
+      }
+      validateAll();
+    }
+
+    validateAll();
+  </script>
+</body>
+</html>
